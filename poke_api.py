@@ -3,6 +3,7 @@ Library for interacting with the PokeAPI.
 https://pokeapi.co/
 '''
 import requests
+import json
 
 POKE_API_URL = 'https://pokeapi.co/api/v2/pokemon/'
 
@@ -22,14 +23,25 @@ def get_pokemon_info(pokemon_name):
         dict: Dictionary of Pokemon information, if successful. Otherwise None.
     """
     # TODO: Clean the Pokemon name parameter
-
+    pokemon_name = pokemon_name.replace(" ","").lower()
     # TODO: Build a clean URL and use it to send a GET request
 
-    # TODO: If the GET request was successful, convert the JSON-formatted message body text to a dictionary and return it
-
-    # TODO: If the GET request failed, print the error reason and return None
-
-    return
+    
+    try:
+        resp = requests.get(POKE_API_URL)
+        resp.raise_for_status()
+    #If the GET request failed, print the error reason and return None
+    except requests.exceptions.HTTPError as err:
+        print(err)
+        return None
+    
+    fullURL = POKE_API_URL + pokemon_name
+    r = requests.get(fullURL)
+    
+    #If the GET request was successful, convert the JSON-formatted message body text to a dictionary and return it
+    #Not sure why but it says this r.json is a dict obj so i guess it works? I guess the response method
+    #returns the json response as a dict
+    return r.json()  
 
 if __name__ == '__main__':
     main()
