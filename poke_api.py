@@ -33,7 +33,7 @@ def get_pokemon_info(pokemon_name):
         print(f"Getting pokemon information for {pokemon_name}... success")
     #If the GET request failed, print the error reason and return None
     except requests.exceptions.RequestException as err:
-        print(err)
+        print(f'Getting pokemon information for {pokemon_name}... failed\n{err}')
         return None
     
     fullURL = POKE_API_URL + pokemon_name
