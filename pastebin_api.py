@@ -20,9 +20,11 @@ def post_new_paste(title, body_text, expiration='N', listed=True):
     Returns:
         str: URL of new paste, if successful. Otherwise None.
     """    
-    # TODO: Function body
-    # Note: This function will be written as a group 
     payload = {'api_dev_key': API_DEV_KEY, 'api_option': 'paste', 'api_paste_code': body_text}
-    r = requests.post(PASTEBIN_API_POST_URL, data=payload)
-    pastebinurl = r.text
+    try:    
+        r = requests.post(PASTEBIN_API_POST_URL, data=payload)
+        pastebinurl = r.text
+        print(f"Posting to Pastebin... success")
+    except requests.exceptions.RequestException as err:
+        print(f"Posting to Pastebin... failure\n{err}")
     return pastebinurl

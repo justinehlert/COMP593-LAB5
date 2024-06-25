@@ -10,6 +10,7 @@ Parameters:
   poke_name = Pokemon name
 """
 import sys
+from sys import argv
 import poke_api
 import pastebin_api
 
@@ -29,6 +30,11 @@ def get_pokemon_name():
         str: Pokemon name
     """
     # TODO: Function body
+    try:
+        pokemonName = argv[1]
+    except IndexError:
+        print("Error: Please provide a pokemon name")
+        quit()
     return
 
 def get_paste_data(pokemon_info):

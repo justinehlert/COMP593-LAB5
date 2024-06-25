@@ -30,8 +30,9 @@ def get_pokemon_info(pokemon_name):
     try:
         resp = requests.get(POKE_API_URL)
         resp.raise_for_status()
+        print(f"Getting pokemon information for {pokemon_name}... success")
     #If the GET request failed, print the error reason and return None
-    except requests.exceptions.HTTPError as err:
+    except requests.exceptions.RequestException as err:
         print(err)
         return None
     
