@@ -35,7 +35,7 @@ def get_pokemon_name():
     except IndexError:
         print("Error: Please provide a pokemon name")
         quit()
-    return
+    return pokemonName
 
 def get_paste_data(pokemon_info):
     """Builds the title and body text for a PasteBin paste that lists a Pokemon's abilities.
@@ -47,8 +47,13 @@ def get_paste_data(pokemon_info):
         (str, str): Title and body text for the PasteBin paste
     """    
     # TODO: Build the paste title
+    pasteTitle = f'{pokemon_info['forms'][0]['name']}'
+    pasteTitle = f'{pasteTitle.capitalize()}\'s Abilities'
     # TODO: Build the paste body text
-    return # (title, body_text)
+
+    abilityNames = [ability['ability']['name'] for ability in pokemon_info['abilities']]
+    bodyText = abilityNames
+    return (pasteTitle, bodyText)
 
 if __name__ == '__main__':
     main()

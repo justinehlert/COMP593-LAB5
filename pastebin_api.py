@@ -20,7 +20,7 @@ def post_new_paste(title, body_text, expiration='N', listed=True):
     Returns:
         str: URL of new paste, if successful. Otherwise None.
     """    
-    payload = {'api_dev_key': API_DEV_KEY, 'api_option': 'paste', 'api_paste_code': body_text}
+    payload = {'api_dev_key': API_DEV_KEY, 'api_option': 'paste', 'api_paste_code': body_text, 'api_paste_expiry_date': expiration}
     try:    
         r = requests.post(PASTEBIN_API_POST_URL, data=payload)
         pastebinurl = r.text

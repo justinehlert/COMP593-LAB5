@@ -42,6 +42,7 @@ def get_pokemon_info(pokemon_name):
     #If the GET request was successful, convert the JSON-formatted message body text to a dictionary and return it
     #Not sure why but it says this r.json is a dict obj so i guess it works? I guess the response method
     #returns the json response as a dict
+
     return r.json()  
 
 if __name__ == '__main__':
