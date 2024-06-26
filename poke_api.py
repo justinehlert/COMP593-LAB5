@@ -22,11 +22,9 @@ def get_pokemon_info(pokemon_name):
     Returns:
         dict: Dictionary of Pokemon information, if successful. Otherwise None.
     """
-    # TODO: Clean the Pokemon name parameter
+    #Clean the Pokemon name parameter
     pokemon_name = pokemon_name.replace(" ","").lower()
-    # TODO: Build a clean URL and use it to send a GET request
-
-    
+    #Build a clean URL and use it to send a GET request    
     try:
         resp = requests.get(POKE_API_URL)
         resp.raise_for_status()
