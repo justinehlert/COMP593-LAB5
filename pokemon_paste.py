@@ -19,7 +19,7 @@ def main():
     poke_info = poke_api.get_pokemon_info(poke_name)
     if poke_info is not None:
         paste_title, paste_body = get_paste_data(poke_info)
-        paste_url = pastebin_api.post_new_paste(paste_title, paste_body, '1M')
+        paste_url = pastebin_api.post_new_paste(paste_title, paste_body)
         print(paste_url)
 
 def get_pokemon_name():
